@@ -107,6 +107,9 @@ function snapAndLockRectangle(boardId, rectangleId, position) {
       console.log('Rectangle Snapped and Locked:', data);
       if (data.isSolved) {
         checkWinCondition(boardId);
+      } else {
+        alert('You Lost restart the game!');
+        clearInterval(timerInterval);
       }
     })
     .catch((error) => console.error('Error snapping rectangle:', error));
@@ -119,7 +122,7 @@ function checkWinCondition(boardId) {
     .then((data) => {
       console.log('Win Condition:', data);
       if (data.message === 'Puzzle solved!') {
-        alert('You won!');
+        alert('You won restart the game!');
         clearInterval(timerInterval);
       }
     })
